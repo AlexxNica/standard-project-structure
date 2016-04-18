@@ -5,12 +5,23 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
+    basePath: './test',
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'browserify', 'chai'],
+
+    plugins: [
+    'karma-chrome-launcher',
+    'karma-firefox-launcher',
+    'karma-ie-launcher',
+    'karma-mocha',
+    'karma-chai',
+    'karma-coverage',
+    'karma-browserify',
+    'karma-commonjs'
+    ],
 
 
     // list of files / patterns to load in the browser
@@ -28,11 +39,18 @@ module.exports = function(config) {
     preprocessors: {
     },
 
+    browserify: {
+        extensions: ['.js', '.coffee'],
+        transform: ['coffeeify'],
+        autoWatch: true,
+        debug: true
+    }
+
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'dots', 'mocha'],
 
 
     // web server port
@@ -54,7 +72,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'Firefox', 'IE'],
 
 
     // Continuous Integration mode
