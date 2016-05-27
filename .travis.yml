@@ -9,4 +9,4 @@ before_install:
   - npm install -g npm
   - npm install
 script:
-  - "eslint ."
+  - "npm run lint"
