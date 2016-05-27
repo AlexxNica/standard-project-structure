@@ -1,5 +1,2 @@
-module.exports = function(grunt) {
-	grunt.initConfig({
-		
-	})
-}
+const x = 'hello';
+console.log(x);
